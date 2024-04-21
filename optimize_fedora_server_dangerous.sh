@@ -4,6 +4,9 @@ set -xeuo pipefail
 # WARNING! Here are optimizations of Fedora Server that may leave your system
 # unusable! Use on your own risk!
 
+# gssproxy is needed by NFS/rpcbind. Othwerwise it can be uninstalled:
+dnf remove gssproxy
+
 # SSSD is overengineered set of libraries and services to access AD and other stuff
 dnf remove sssd sssd-\*
 

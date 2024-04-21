@@ -1,6 +1,13 @@
 #!/bin/bash
 set -xeuo pipefail
 
+# systemd-oomd will randomly kill critical services. Disable this nonsense:
+systemctl mask --now systemd-oomd
+
+# mask controversial timers
+systemctl mask dnf-makecache.timer unbound-anchor.timer plocate-updatedb.timer fstrim.timer \
+	raid-check.timer
+
 # systemd.resolved by defaults listens globally on port udp/5355
 # https://serverfault.com/questions/859038/what-does-the-systemd-resolved-service-do-and-does-it-need-to-listen-on-all-inte
 # Disable that:
@@ -31,11 +38,6 @@ dnf remove fprintd fprintd-pam
 dnf remove cockpit cockpit-\*
 # install back useful tools
 dnf install jq  openssl NetworkManager-tui
-
-# first install proper editor
-dnf install vim-enhanced
-# set default editor to vim (will remove nano-default editor):
-dnf install --allowerasing vim-default-editor
 
 # Plymouth is here to hide useful boot messages. Who needs that?
 dnf remove plymouth plymouth-\*
