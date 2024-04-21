@@ -1,6 +1,14 @@
 #!/bin/bash
 set -xeuo pipefail
 
+# systemd.resolved by defaults listens globally on port udp/5355
+# https://serverfault.com/questions/859038/what-does-the-systemd-resolved-service-do-and-does-it-need-to-listen-on-all-inte
+# Disable that:
+grep -qE '^LLMNR=no' /etc/systemd/resolved.conf || {
+	echo 'LLMNR=no' >> /etc/systemd/resolved.conf
+	systemctl restart systemd-resolved
+}
+
 # I have no NUMA
 dnf remove irqbalance
 
