@@ -10,11 +10,20 @@ systemctl mask dnf-makecache.timer unbound-anchor.timer plocate-updatedb.timer f
 
 # systemd.resolved by defaults listens globally on port udp/5355
 # https://serverfault.com/questions/859038/what-does-the-systemd-resolved-service-do-and-does-it-need-to-listen-on-all-inte
-# Disable that:
+# First ensure that there is section `[Resolve]`
+grep -qE '^\[Resolve\]' /etc/systemd/resolved.conf || {
+	echo '[Resolve]' >> /etc/systemd/resolved.conf
+}
+# Then Disable that:
 grep -qE '^LLMNR=no' /etc/systemd/resolved.conf || {
 	echo 'LLMNR=no' >> /etc/systemd/resolved.conf
 	systemctl restart systemd-resolved
 }
+grep -qE '^MulticastDNS=no' /etc/systemd/resolved.conf || {
+	echo 'MulticastDNS=no' >> /etc/systemd/resolved.conf
+	systemctl restart systemd-resolved
+}
+
 
 # I have no NUMA
 dnf remove irqbalance
