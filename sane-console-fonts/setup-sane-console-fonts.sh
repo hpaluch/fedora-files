@@ -1,5 +1,5 @@
 #!/bin/bash
-# setup readable console fonts instead of default 
+# setup readable console fonts instead of default
 # unreadable tiny flea characters
 set -euo pipefail
 
