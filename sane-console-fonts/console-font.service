@@ -1,0 +1,11 @@
+[Unit]
+Description=set usable console font
+After=getty-pre.target
+Before=getty.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/setupcon
+
+[Install]
+WantedBy=getty.target
