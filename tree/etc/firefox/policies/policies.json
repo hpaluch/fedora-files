@@ -1,0 +1,28 @@
+{
+	"policies": {
+		"AppAutoUpdate": false,
+		"AutofillCreditCardEnabled": false,
+		"CaptivePortal": false,
+		"DisableAppUpdate": true,
+		"DisableBuiltinPDFViewer": true,
+		"DisableFeedbackCommands": true,
+		"DisableFirefoxAccounts": true,
+		"DisableFirefoxStudies": true,
+		"DisablePocket": true,
+		"DisableTelemetry": true,
+		"DisplayBookmarksToolbar": "always",
+		"DisplayMenuBar": "default-on",
+		"DNSOverHTTPS": {
+			"Enabled":  false,
+			"Locked": true
+		},
+		"DontCheckDefaultBrowser": true,
+		"ManualAppUpdateOnly": true,
+		"NetworkPrediction": true,
+		"PDFjs": {
+			"Enabled": false
+		},
+		"TranslateEnabled": false
+
+	}
+}
