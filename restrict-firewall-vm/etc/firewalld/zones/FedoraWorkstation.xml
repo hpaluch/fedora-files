@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<zone>
+  <short>Fedora Workstation</short>
+  <description>Unsolicited incoming network packets are rejected from port 1 to 1024, except for select network services. Incoming packets that are related to outgoing network connections are accepted. Outgoing network connections are allowed.</description>
+  <service name="dhcpv6-client"/>
+  <service name="samba-client"/>
+  <rule family="ipv4">
+    <source address="192.168.122.1"/>
+    <service name="ssh"/>
+    <accept/>
+  </rule>
+  <forward/>
+</zone>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<policy target="REJECT">
+  <rule family="ipv4">
+    <destination address="192.168.122.1"/>
+    <service name="dhcp"/>
+    <accept/>
+  </rule>
+  <rule family="ipv4">
+    <destination address="192.168.122.1"/>
+    <service name="dns"/>
+    <accept/>
+  </rule>
+  <rule family="ipv6">
+    <destination address="ff02::/64"/>
+    <icmp-type name="mld2-listener-report"/>
+    <accept/>
+  </rule>
+  <rule family="ipv6">
+    <destination address="ff02::/64"/>
+    <icmp-type name="neighbour-solicitation"/>
+    <accept/>
+  </rule>
+  <rule family="ipv6">
+    <destination address="ff02::/64"/>
+    <icmp-type name="router-solicitation"/>
+    <accept/>
+  </rule>
+  <ingress-zone name="HOST"/>
+  <egress-zone name="ANY"/>
+</policy>
