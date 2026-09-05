@@ -1,0 +1,19 @@
+--- etc/httpd/conf.d/kojiweb.conf.orig	2026-09-05 10:01:59.058832181 +0200
++++ etc/httpd/conf.d/kojiweb.conf	2026-09-05 10:02:09.330000000 +0200
+@@ -32,11 +32,11 @@
+ # </Location>
+ 
+ # uncomment this to enable authentication via SSL client certificates
+-# <Location /koji/login>
+-#     SSLVerifyClient require
+-#     SSLVerifyDepth  10
+-#     SSLOptions +StdEnvVars
+-# </Location>
++<Location /koji/login>
++     SSLVerifyClient require
++     SSLVerifyDepth  10
++     SSLOptions +StdEnvVars
++</Location>
+ 
+ Alias /koji-static/ "/usr/share/koji-web/static/"
+ 

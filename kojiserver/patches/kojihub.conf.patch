@@ -1,0 +1,19 @@
+--- etc/httpd/conf.d/kojihub.conf.orig	2026-09-05 09:37:25.132096306 +0200
++++ etc/httpd/conf.d/kojihub.conf	2026-09-05 09:37:40.295000000 +0200
+@@ -42,11 +42,11 @@
+ </Directory>
+ 
+ # uncomment this to enable authentication via SSL client certificates
+-# <Location /kojihub/ssllogin>
+-#         SSLVerifyClient require
+-#         SSLVerifyDepth  10
+-#         SSLOptions +StdEnvVars
+-# </Location>
++<Location /kojihub/ssllogin>
++         SSLVerifyClient require
++         SSLVerifyDepth  10
++         SSLOptions +StdEnvVars
++</Location>
+ 
+ # uncomment this to enable authentication via GSSAPI
+ # <Location /kojihub/ssllogin>

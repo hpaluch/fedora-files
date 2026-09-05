@@ -1,0 +1,8 @@
+--- etc/pki/koji/ssl.cnf.orig	2026-09-05 10:38:42.658821634 +0200
++++ etc/pki/koji/ssl.cnf	2026-09-05 10:39:01.969758062 +0200
+@@ -74,4 +74,4 @@
+ [v3_ca]
+ subjectKeyIdentifier            = hash
+ authorityKeyIdentifier          = keyid:always,issuer:always
+-basicConstraints                = CA:true
++basicConstraints                = critical,CA:true

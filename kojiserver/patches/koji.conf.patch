@@ -1,0 +1,44 @@
+--- etc/koji.conf.orig	2026-09-05 09:52:16.353502710 +0200
++++ etc/koji.conf	2026-09-05 10:11:31.407838565 +0200
+@@ -4,18 +4,18 @@
+ 
+ ;url of XMLRPC server
+ ;server = http://hub.example.com/kojihub
+-server = https://koji.fedoraproject.org/kojihub
++server = https://fed44-koji.example.com/kojihub
+ 
+ ;url of web interface
+ ;weburl = http://www.example.com/koji
+-weburl = https://koji.fedoraproject.org/koji
++weburl = https://fed44-koji.example.com/koji
+ 
+ ;url of package download site
+ ;pkgurl = http://www.example.com/packages
+-topurl = https://kojipkgs.fedoraproject.org
++topurl = https://fed44-koji.example.com
+ 
+ ;path to the koji top directory
+-;topdir = /mnt/koji
++topdir = /mnt/koji
+ 
+ ;configuration for Kerberos authentication
+ 
+@@ -26,15 +26,15 @@
+ ;keytab = /etc/krb5.keytab
+ 
+ ; fedora uses kerberos auth
+-authtype = kerberos
++authtype = ssl
+ 
+ ;configuration for SSL authentication
+ 
+ ;client certificate
+-;cert = ~/.koji/client.crt
++cert = ~/.koji/client.crt
+ 
+ ;certificate of the CA that issued the HTTP server certificate
+-;serverca = ~/.koji/serverca.crt
++serverca = ~/.koji/serverca.crt
+ 
+ ;plugin paths, separated by ':' as the same as the shell's PATH
+ ;koji_cli_plugins module and ~/.koji/plugins are always loaded in advance,
