@@ -22,6 +22,8 @@ default_crl_days        = 30
 default_md              = sha256
 preserve                = no
 policy                  = policy_match
+# copy SAN from CSR
+copy_extensions = copy
 
 [policy_match]
 countryName             = match
