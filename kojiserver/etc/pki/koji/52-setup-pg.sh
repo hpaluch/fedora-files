@@ -13,6 +13,7 @@ EOF
 f=/var/lib/pgsql/data/postgresql.conf
 line="listen_addresses = ''"
 grep "/^$line" $f || echo "$line" >> $f
+echo "TODO: Also upper max_connections in $f to at least 200"
 
 systemctl restart postgresql
 

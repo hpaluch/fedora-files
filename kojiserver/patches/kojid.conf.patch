@@ -1,0 +1,37 @@
+--- etc/kojid/kojid.conf.orig	2026-09-12 20:00:57.715000000 +0200
++++ etc/kojid/kojid.conf	2026-09-12 20:10:26.374608423 +0200
+@@ -52,10 +52,10 @@
+ ; oz_install_timeout=7200
+ 
+ ; The URL for the xmlrpc server
+-server=http://hub.example.com/kojihub
++server=http://fed44-koji2.example.com/kojihub
+ 
+ ; The URL for the file access
+-topurl=http://hub.example.com/kojifiles
++topurl=http://fed44-koji2.example.com/kojifiles
+ 
+ ; use createrepo_c rather than createrepo
+ ; use_createrepo_c=True
+@@ -91,7 +91,7 @@
+ ; to run before building the srpm. It is generally used to retrieve source
+ ; files from a remote location.  If no source_cmd is specified, "make sources"
+ ; is run by default.
+-allowed_scms=scm.example.com:/cvs/example git.example.org:/example svn.example.org:/users/*:no
++allowed_scms=fed44-koji2.example.com:/example
+ 
+ ; If use the option allowed_scms above for allowing / denying SCM, default: true
+ ; allowed_scms_use_config = true
+@@ -137,10 +137,10 @@
+ ;configuration for SSL authentication
+ 
+ ;client certificate
+-;cert = /etc/kojid/client.crt
++cert = /etc/pki/koji/kojihub.pem
+ 
+ ;certificate of the CA that issued the HTTP server certificate
+-;serverca = /etc/kojid/serverca.crt
++serverca = /etc/pki/koji/koji_ca_cert.crt
+ 
+ ;if set to True, failing subtask will not automatically cancel other siblings
+ ;build_arch_can_fail = False
