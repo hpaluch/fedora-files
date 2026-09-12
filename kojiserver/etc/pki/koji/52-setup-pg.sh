@@ -1,6 +1,21 @@
 #!/bin/bash
 set -xeuo pipefail
 
-dnf install koji postgresql
-su - koji -c "/usr/sbin/psql koji koji < /usr/share/koji/schema.sql"
+# allow 'koji' user to connect to postgresql socket
+f=/var/lib/pgsql/data/pg_hba.conf
+cat <<'EOF' > $f
+#TYPE   DATABASE    USER    CIDR-ADDRESS      METHOD
+local   koji        koji                       trust
+local   all         postgres                   peer
+EOF
+
+# disable listening on socket (fixme: expects that there is not yet line listen_addresses in conf!)
+f=/var/lib/pgsql/data/postgresql.conf
+line="listen_addresses = ''"
+grep "/^$line" $f || echo "$line" >> $f
+
+systemctl restart postgresql
+
+# this command should now succeed
+su - koji -c "/usr/sbin/psql -l koji koji"
 exit 0

@@ -7,6 +7,5 @@ u=postgres
 createuser --no-superuser --no-createrole --no-createdb koji
 createdb -O koji koji
 psql -c "alter user koji with encrypted password 'asdf1234';"
-logout
 
 exit 0
