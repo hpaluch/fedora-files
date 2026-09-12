@@ -1,0 +1,6 @@
+ssl2.cnf
+index.txt*
+serial*
+*.crt
+*.pem
+*.orig

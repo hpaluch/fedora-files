@@ -1,8 +1,12 @@
 #!/bin/bash
-set -xeuo pipefail
-
+set -euo pipefail
+fqdn=`hostname -f`
+echo "Using FQDN='$fqdn'"
+set -x
 cd /etc/pki/koji/
 mkdir -p {certs,private,confs}
+sed -i.orig "/^commonName_default/s/=.*/= $fqdn/" ssl.cnf
+diff ssl.cnf{.orig,} || true
 touch index.txt
 echo 01 > serial
 openssl genrsa -out private/koji_ca_cert.key 2048

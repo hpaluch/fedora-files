@@ -7,10 +7,12 @@ caname=koji
 
 # user is equal to parameter one or the first argument when you actually
 # run the script
-user=$1
+user=kojiadmin
 
 openssl genrsa -out private/${user}.key 2048
-cat ssl.cnf | sed 's/fed44-koji.example.com/'${user}'/'> ssl2.cnf
+
+sed "/^commonName_default/s/=.*/= $user/" ssl.cnf > ssl2.cnf
+diff -u ssl{,2}.cnf || true
 openssl req -config ssl2.cnf -new -nodes -out certs/${user}.csr -key private/${user}.key
 openssl ca -config ssl2.cnf -keyfile private/${caname}_ca_cert.key -cert ${caname}_ca_cert.crt \
     -out certs/${user}.crt -outdir certs -infiles certs/${user}.csr
