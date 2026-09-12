@@ -1,31 +1,27 @@
---- etc/kojiweb/web.conf.orig	2026-09-05 09:57:12.672274800 +0200
-+++ etc/kojiweb/web.conf	2026-09-05 09:59:49.084544240 +0200
-@@ -3,8 +3,8 @@
+--- etc/kojiweb/web.conf.orig	2026-07-08 19:25:44.000000000 +0200
++++ etc/kojiweb/web.conf	2026-09-12 14:26:13.678000000 +0200
+@@ -3,8 +3,9 @@
  # KojiTheme = mytheme
  
  # Key urls
 -KojiHubURL = http://hub.example.com/kojihub
 -KojiFilesURL = http://server.example.com/kojifiles
-+KojiHubURL = http://fed44-koji.example.com/kojihub
-+KojiFilesURL = http://fed44-koji.example.com/kojifiles
++KojiHubURL = http://fed44-koji2.example.com/kojihub
++KojiFilesURL = http://fed44-koji2.example.com/kojifiles
++
  
  # Kerberos authentication options
  # WebPrincipal = koji/web@EXAMPLE.COM
-@@ -16,7 +16,7 @@
+@@ -16,10 +17,10 @@
  # KrbServerRealm = EXAMPLE.COM
  
  # SSL authentication options
 -# WebCert = /etc/kojiweb/kojiweb.crt
-+WebCert = /etc/pki/koji/certs/kojihub.crt
++WebCert = /etc/kojiweb/kojiweb.crt
  # KojiHubCA needs to be set only if system-wide CA bundle doesn't contain
  # it already. Note, that it will override that bundle.
- # KojiHubCA = /etc/kojiweb/kojihubca.crt
-@@ -25,7 +25,7 @@
+-# KojiHubCA = /etc/kojiweb/kojihubca.crt
++KojiHubCA = /etc/kojiweb/kojihubca.crt
+ 
+ # How the users authenticate to kojiweb, if different from the
  # way Kojiweb authenticates to the hub. This can be used
- # to have users authenticate to kojiweb via kerberos while
- # still using an SSL certificate to authenticate to the hub.
--# WebAuthType = kerberos
-+WebAuthType = ssl
- 
- LoginTimeout = 72
- 

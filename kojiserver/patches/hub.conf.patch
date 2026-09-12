@@ -1,20 +1,26 @@
---- etc/koji-hub/hub.conf.orig	2026-09-05 09:54:44.811152091 +0200
-+++ etc/koji-hub/hub.conf	2026-09-05 09:55:29.103000000 +0200
-@@ -42,7 +42,7 @@
+--- etc/koji-hub/hub.conf.orig	2026-07-08 19:25:44.000000000 +0200
++++ etc/koji-hub/hub.conf	2026-09-12 20:37:33.281830868 +0200
+@@ -42,20 +42,18 @@
  #note: ssl auth may also require editing the httpd config (conf.d/kojihub.conf)
  
  ## the client username is the common name of the subject of their client certificate
 -# DNUsernameComponent = CN
 +DNUsernameComponent = CN
  ## separate multiple DNs with |
- # ProxyDNs = /C=US/ST=Massachusetts/O=Example Org/OU=Example User/CN=example/emailAddress=example@example.com
+-# ProxyDNs = /C=US/ST=Massachusetts/O=Example Org/OU=Example User/CN=example/emailAddress=example@example.com
+-
++ProxyDNs = /C=AT/ST=Vienna/O=My company/CN=example/emailAddress=root@example.com
+ ## end SSL client certificate auth configuration
  
-@@ -55,7 +55,7 @@
+ 
+-
+ ##  Other options  ##
+ LoginCreatesUser = On
  # Clients with ProxyPrincipals can use different method for proxying user than GSSAPI. In such case
  # it need to be explicitely allowed via AllowProxyAuthType.
  # AllowProxyAuthType = Off
 -KojiWebURL = http://kojiweb.example.com/koji
-+KojiWebURL = http://fed44-koji.example.com/koji
++KojiWebURL = http://fed44-koji2.example.com/koji
  # The domain name that will be appended to Koji usernames
  # when creating email notifications
  #EmailDomain = example.com
