@@ -77,3 +77,4 @@ authorityKeyIdentifier          = keyid,issuer:always
 subjectKeyIdentifier            = hash
 authorityKeyIdentifier          = keyid:always,issuer:always
 basicConstraints                = critical,CA:true
+keyUsage                        = critical,digitalSignature,keyCertSign
