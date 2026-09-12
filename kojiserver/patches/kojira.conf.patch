@@ -1,0 +1,24 @@
+--- etc/kojira/kojira.conf.orig	2026-09-12 21:12:37.720000000 +0200
++++ etc/kojira/kojira.conf	2026-09-12 21:17:06.215164059 +0200
+@@ -4,7 +4,7 @@
+ ; password=kojira
+ 
+ ; The URL for the koji hub server
+-server=http://hub.example.com/kojihub
++server=http://fed44-koji2.example.com/kojihub
+ 
+ ; The directory containing the repos/ directory
+ topdir=/mnt/koji
+@@ -23,10 +23,10 @@
+ ;configuration for SSL authentication
+ 
+ ;client certificate
+-;cert = /etc/kojira/client.crt
++cert = /etc/pki/koji/kojira.pem
+ 
+ ;certificate of the CA that issued the HTTP server certificate
+-;serverca = /etc/kojira/serverca.crt
++serverca = /etc/pki/koji/koji_ca_cert.crt
+ 
+ ;how soon (in seconds) to clean up expired repositories. 1 week default
+ ;deleted_repo_lifetime = 604800
