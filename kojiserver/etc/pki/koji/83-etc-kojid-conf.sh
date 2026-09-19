@@ -4,12 +4,14 @@ f=/etc/kojid/kojid.conf
 fqdn=`hostname -f`
 kojicert=/etc/pki/koji/kojihub.pem
 kojica=/etc/pki/koji/koji_ca_cert.crt
+scms="github.com:/hpaluch-pil/*:no"
 
 sed -i.orig  's@^\(server\|topurl\)\( *= *http://\).*\(/koji.*\)@\1\2'"$fqdn"'\3@
      s@^\(authtype *= *\).*@\1ssl@
      s@^\;\(cert *= *\).*@\1'"$kojicert"'@
      s@^\;\(serverca *= *\).*@\1'"$kojica"'@
-     s@^\(allowed_scms *= *\).*@\1'"$fqdn"':/@
+     s@^\(allowed_scms *= *\).*@\1'"$scms"':/@
+     s@^\;* *\(sleeptime *= *\).*@\11@
      ' $f
 diff -u $f{.orig,} || true
 exit 0
