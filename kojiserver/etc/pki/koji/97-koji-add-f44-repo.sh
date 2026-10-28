@@ -13,6 +13,10 @@ DIST_BUILD=${DIST}-build
 
 koji add-tag ${DIST}
 koji add-tag --parent ${DIST} --arches "x86_64" ${DIST_BUILD}
+# disable enforced GPG signatures that break mock on F45, see:
+# - https://forge.fedoraproject.org/koji/koji/issues/4544
+# - https://forge.fedoraproject.org/koji/koji/pulls/4635/files
+koji edit-tag ${DIST_BUILD} -x mock.package_manager=dnf5
 
 ADD_EXTERNAL_REPO="koji add-external-repo -t ${DIST_BUILD} ${DIST}"
 

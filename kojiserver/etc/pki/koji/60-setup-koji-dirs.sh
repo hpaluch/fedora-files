@@ -1,6 +1,7 @@
 #!/bin/bash
 set -xeuo pipefail
-dnf install koji-hub koji-web mod_ssl python3-jinja2
+# Fedora 45: install semanage command via policycoreutils-python-utils
+dnf install koji-hub koji-web mod_ssl python3-jinja2 policycoreutils-python-utils
 # add simple landing page
 echo 'Go to <a href="/koji/">/koji/</a>' > /var/www/html/index.html
 mkdir -p /mnt/koji
