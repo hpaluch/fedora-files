@@ -10,7 +10,7 @@ sed -i.orig  's@^\(server\|topurl\)\( *= *http://\).*\(/koji.*\)@\1\2'"$fqdn"'\3
      s@^\(authtype *= *\).*@\1ssl@
      s@^\;\(cert *= *\).*@\1'"$kojicert"'@
      s@^\;\(serverca *= *\).*@\1'"$kojica"'@
-     s@^\(allowed_scms *= *\).*@\1'"$scms"':/@
+     s@^\(allowed_scms *= *\).*@\1'"$scms"'@
      s@^\;* *\(sleeptime *= *\).*@\11@
      ' $f
 diff -u $f{.orig,} || true
