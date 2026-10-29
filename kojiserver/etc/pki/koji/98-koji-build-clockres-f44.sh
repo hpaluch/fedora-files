@@ -11,6 +11,6 @@ koji list-pkgs --quiet  --tag dist-f44 | grep -w clockres || {
 	koji add-pkg --owner kojiadmin dist-f44 clockres
 }
 koji list-pkgs --tag dist-f44
-koji mock-config --tag dist-f44-build --arch x86_64
+koji mock-config --tag dist-f44-build --arch x86_64 || echo "WARN: It may fail when there is no build yet"
 koji build --draft dist-f44 'git+https://github.com/hpaluch-pil/clockres.git#375260459f49346752ff24d0f7ee2acabdddc442'
 exit 0
