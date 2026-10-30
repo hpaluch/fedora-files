@@ -13,7 +13,7 @@ sd=
 
 set -x
 # first, install proper editor and make it default
-p=vim-default-editor 
+p=vim-default-editor
 rpm -q $p || ${sd}dnf install -y --allowerasing $p
 f=/etc/vimrc.local
 [ -f "$f" ] || {
