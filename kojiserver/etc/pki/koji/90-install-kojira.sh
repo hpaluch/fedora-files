@@ -1,4 +1,4 @@
 #!/bin/bash
 set -xeuo pipefail
-dnf install koji-utils
+dnf install -y koji-utils
 exit 0

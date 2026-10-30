@@ -1,4 +1,4 @@
 #!/bin/bash
 set -xeuo pipefail
-dnf install koji-builder
+dnf install -y koji-builder
 exit 0
