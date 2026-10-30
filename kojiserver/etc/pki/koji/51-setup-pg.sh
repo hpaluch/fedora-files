@@ -1,11 +1,12 @@
 #!/bin/bash
-set -xeuo pipefail
+set -euo pipefail
 
+sd=
 u=postgres
-[ `id -un` = "$u" ] || { echo "ERROR: script must be run as user '$u' but you are '`id  -un`'" >&2; exit 1; }
+[ `id -un` = "$u" ] || sd="sudo -u $u -i "
 
-createuser --no-superuser --no-createrole --no-createdb koji
-createdb -O koji koji
-psql -c "alter user koji with encrypted password 'asdf1234';"
-
+set -x
+${sd}createuser --no-superuser --no-createrole --no-createdb koji
+${sd}createdb -O koji koji
+${sd}psql -c "alter user koji with encrypted password 'asdf1234';"
 exit 0
