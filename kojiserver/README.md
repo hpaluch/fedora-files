@@ -5,7 +5,12 @@ Based on: https://forge.fedoraproject.org/koji/koji/src/branch/master/docs/sourc
 Fully tested Host OS: Fedora 44  and Fedora 45 (pre-release as of 2026-10-30)
 
 How to use:
-- copy `etc/pki/koji/*` to your `/etc/pki/koji` folder
+- copy `etc/pki/koji/*` to your `/etc/pki/koji` folder, using:
+
+  ```shell
+  find etc/pki/koji/ | sudo cpio -pvdm --no-preserve-owner /
+  ```
+
 - become root
 - run sequentially all scripts (starting with numbers) there as root (few scripts need to run
   as your original non-privileged users - they will tell you)
